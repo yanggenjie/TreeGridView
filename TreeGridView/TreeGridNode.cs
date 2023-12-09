@@ -364,6 +364,7 @@ namespace TreeGridView
 
         private void Expand(bool expandSelf, bool expandChild)
         {
+            //var curNode = this.Cells[0].Value.ToString();
             ExpandingEventArgs args = new ExpandingEventArgs(this);
             if (expandSelf)
             {
@@ -374,7 +375,11 @@ namespace TreeGridView
             {
                 foreach (TreeGridNode node in Nodes)
                 {
-                    node.Expand(expandChild, expandChild);
+                    //var nodeName = node.Cells[0].Value.ToString();
+                    if (node.IsExpanded)
+                    {
+                        node.Expand(expandChild, expandChild);
+                    }
                     node.Visible = true;
                 }
                 Grid.InvalidateCell(Cells[0]);
